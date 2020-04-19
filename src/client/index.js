@@ -1,20 +1,16 @@
-import { checkForName } from './js/nameChecker';
-import { handleSubmit } from './js/formHandler';
-import './styles/resets.scss';
-import './styles/base.scss';
-import './styles/footer.scss';
-import './styles/form.scss';
-import './styles/header.scss';
+import { valUrl } from './js/imprint';
+import { getApiData } from './js/imprint';
+import { whenSubmit } from './js/imprint';
+
+
+import './styles/resets.scss'
+import './styles/header.scss'
+import './styles/footer.scss'
+import './styles/form.scss'
+import './styles/base.scss'
 
 export {
-    checkForName,
-    handleSubmit
+	getApiData,
+	whenSubmit,
+	valUrl,
 }
-
-
-
-
-
-
-console.log(`Your API key is ${process.env.API_KEY}`);
-
