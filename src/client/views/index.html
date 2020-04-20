@@ -20,16 +20,12 @@
         </div>
     </header>
     <main>
-        <h1>The Aylien API</h1>
-        <p class="description">The Aylien Text Analysis API provides powerful and flexible AI-driven content analysis
-            solutions that bring the power of NLP to the masses. We help developers, data scientists, and marketers
-            understand human-generated textual content at scale.</p>
-        <h2>Try it out! Type in a "URL" to see what the Aylien NLP understands from it.</h2>
+
         <section>
-            <form class="" onsubmit="return Client.handleSubmit(event)">
-                <input id="name" name="input" placeholder="Any News Website URL Using http or https" type="url"
-                    value=""> <input id="callapi" name="" onclick="return Client.handleSubmit(event)"
-                    onsubmit="return Client.handleSubmit(event)" type="submit" value="submit">
+            <form class="" onsubmit="return Client.whenSubmit(event)">
+                <input id="name" name="input" placeholder="Any News Website URL Using http or https" type="url" value="">
+                    
+                    <input id="callapi" name="" onclick="return Client.whenSubmit(event)" onsubmit="return Client.whenSubmit(event)" type="submit" value="submit">
             </form>
             <div id="error"></div>
             <section class="url-results">
@@ -39,19 +35,19 @@
                     <ul>
                         <li class="list">
                             <h3>Text Polarity:</h3>
-                            <p id="polarity"></p>
+                            <p id="pol"></p>
                             <h4>Confidence:</h4>
-                            <p id="polarity_confidence"></p>
+                            <p id="polcon"></p>
                         </li>
                         <li class="list">
                             <h3>Text Subjectivity:</h3>
-                            <p id="subjectivity"></p>
+                            <p id="sub"></p>
                             <h4>Confidence:</h4>
-                            <p id="subjectivity_confidence"></p>
+                            <p id="subcon"></p>
                         </li>
                         <li class="list">
                             <h3>Text Excerpt:</h3>
-                            <p id="text"></p>
+                            <p id="orURL"></p>
                         </li>
                     </ul>
                 </div>

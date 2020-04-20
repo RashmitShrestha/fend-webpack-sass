@@ -4,10 +4,9 @@ const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
-
 module.exports = {
     devServer: {
-        port: 8081
+        port: 3100
      },
     entry: './src/client/index.js',
     mode: 'development',
