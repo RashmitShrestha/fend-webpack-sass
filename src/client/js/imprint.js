@@ -1,37 +1,53 @@
 const valUrl = require('valid-url');
-// installed from npm but idea gotten from JZerman
+// installed valid-url from npm but idea gotten from JZerman
 //Code Academy in the Back-End section helped tons after looking at other people's code
 
-           //Utilized from my Last Project
+//Utilized from my Last Project
 
-    const getApiData = async (url, input) => {
-        const res = await fetch('/end', {
+const getApiData = async (url, input) => {
+    const res = await fetch('/article', {
         method: "POST",
         credentials: "same-origin",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            text: input})
-        });
-        try {
-           //Utilized from my Last Project -  Weather Project
-            const data = await res.json();
-                document.getElementById('pol').innerHTML = data.polarity;
-                document.getElementById('polcon').innerHTML = data.polarity_confidence;
-                document.getElementById('sub').innerHTML = data.subjectivity;
-                document.getElementById('subcon').innerHTML = data.subjectivity_confidence;
-                document.getElementById('orURL').innerHTML = data.text;
-            
-            } catch(error) {
-console.log("error")            }
-        }
 
-        const whenSubmit = function(event) {
-            let formText = document.getElementById('name').value;
-                // check for valid url
-                if (Client.valUrl.isWebUri(formText)) {
-                  Client.getApiData('/article', formText);
-                }
-            };
+
+        body: JSON.stringify({
+        text: input
+        })
+    });
+    try {
+        //Utilized from my Last Project -  Weather Project
+
+        const output = await res.json();
+
+        document.getElementById('pol').innerHTML = output.polarity;
+        document.getElementById('polcon').innerHTML = output.polarity_confidence;
+        document.getElementById('sub').innerHTML = output.subjectivity;
+        document.getElementById('subcon').innerHTML = output.subjectivity_confidence;
+        document.getElementById('orURL').innerHTML = output.text;
+
+    } catch (error) {
+        console.log("error")
+    }
+}
+//In order to validate URL entered
+const whenSubmit = function (event) {
+    event.preventDefault();
+    let input = document.getElementById('name').value;
+    const pageBody =  document.getElementsByTagName('body');
+    // check for valid url
+    if (valUrl.isWebUri(input)) {
+        //Tried putting in the original url for /article to solve problem
+        getApiData('http://localhost:2111/article', input);
+        document.getElementById("notValid").innerHTML = "";
+  //Help from w3Schools
+    } else {
+document.getElementById("notValid").innerHTML = "The URL you entered is invalid, please but a different one";
+pageBody.style.backgroundColor = "red";
+}
+  //Help from w3Schools
+
+    };
 export { whenSubmit, valUrl, getApiData }

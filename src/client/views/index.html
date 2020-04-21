@@ -2,51 +2,46 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Evaluate a News Article</title>
+    <title>Udacity Projects</title>
     <link href="main.css" rel="stylesheet">
-    <link href="https://img.icons8.com/nolan/100/000000/new-openstack-logo.png" rel="icon" sizes="48x48"
-        type="image/png">
 </head>
 
 <body>
     <header>
-        <div class="">
-            Udacity
-        </div>
-        <div class="">
-            Evaluate a News Article with NLP
+        <div>
+            <b>Udacity Projects: Analyze Article with Aylien API</b>
         </div>
     </header>
     <main>
 
         <section>
-            <form class="" onsubmit="return Client.whenSubmit(event)">
-                <input id="name" name="input" placeholder="Any News Website URL Using http or https" type="url" value="">
-                    
-                    <input id="callapi" name="" onclick="return Client.whenSubmit(event)" onsubmit="return Client.whenSubmit(event)" type="submit" value="submit">
+            <form>
+                <input id="name" name="input"  type="url" value="" type="url" placeholder="Put in the URL of any article in the Internet :)" >
+
+                <button onclick="return Client.whenSubmit(event)">Watch the Magic!</button>
             </form>
-            <div id="error"></div>
-            <section class="url-results">
-                <strong>Results:</strong>
-                <div class="result-blocks" id="results">
-                    <!-- the content will be added here by JS -->
+            <section id="dataRe">
+              <h1 id="notValid"></h1>
+                <strong>The Outcome:</strong>
+                <div>
                     <ul>
-                        <li class="list">
-                            <h3>Text Polarity:</h3>
+                        <li>
+                            <h1>Text Polarity:</h1>
                             <p id="pol"></p>
-                            <h4>Confidence:</h4>
+                            <h1>Confidence:</h1>
                             <p id="polcon"></p>
                         </li>
-                        <li class="list">
-                            <h3>Text Subjectivity:</h3>
+                        <li>
+                            <h1>Subjectivity:</h1>
                             <p id="sub"></p>
-                            <h4>Confidence:</h4>
+                            <h1>Subjectivity Confidence:</h1>
                             <p id="subcon"></p>
                         </li>
-                        <li class="list">
-                            <h3>Text Excerpt:</h3>
+                        <li>
+                            <h1>The Article Extracted:</h1>
                             <p id="orURL"></p>
                         </li>
                     </ul>
@@ -55,7 +50,8 @@
         </section>
     </main>
     <script>
-        if ('serviceWorker' in navigator) {
+      //Here is the Service Worker!
+      if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/service-worker.js').then(registration => {
                     console.log('SW registered: ', registration);
@@ -68,6 +64,7 @@
     <footer>
         <p>Project Created for the Udacity FEND &copy; 2019</p>
     </footer>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 
 </html>
