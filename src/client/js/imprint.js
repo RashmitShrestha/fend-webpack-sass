@@ -35,8 +35,11 @@ const getApiData = async (url, input) => {
 //In order to validate URL entered
 const whenSubmit = function (event) {
     event.preventDefault();
-    let input = document.getElementById('name').value;
+
+    const name =  document.getElementById('name')
+    let input = name.value;
     const pageBody =  document.getElementsByTagName('body');
+
     // check for valid url
     if (valUrl.isWebUri(input)) {
         //Tried putting in the original url for /article to solve problem
@@ -48,6 +51,6 @@ document.getElementById("notValid").innerHTML = "The URL you entered is invalid,
 pageBody.style.backgroundColor = "red";
 }
   //Help from w3Schools
-
+whenSubmit;
     };
 export { whenSubmit, valUrl, getApiData }
