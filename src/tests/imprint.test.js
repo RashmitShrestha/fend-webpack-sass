@@ -4,16 +4,16 @@ import { whenSubmit } from '/rashmit_git_Repos/fend-webpack-sass/src/client/js/i
 import { getApiData } from '/rashmit_git_Repos/fend-webpack-sass/src/client/js/imprint';
 
 
-test('expects to be a function',() => {
- 
-    expect( typeof whenSubmit()).toBe('function');
+test('expects to be a function', () => {
+
+    expect(typeof whenSubmit()).toBe('function');
 
 });
 
 
 
-test('expects to be a function',() => {
- 
-    expect( typeof getApiData()).toBe('function');
+test('expects to be a function', () => {
+
+    expect(typeof getApiData()).toBe('function');
 
 });

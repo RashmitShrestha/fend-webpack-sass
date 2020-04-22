@@ -1,4 +1,8 @@
-{//resolved from friend's help
-    "presets": ["@babel/preset-env"],
-    "plugins": [ "@babel/plugin-transform-runtime"]
+{ //resolved from friend's help
+    "presets": [
+        "@babel/preset-env"
+    ],
+    "plugins": [
+        "@babel/plugin-transform-runtime"
+    ]
 }

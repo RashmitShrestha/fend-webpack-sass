@@ -7,7 +7,7 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 module.exports = {
     devServer: {
         port: 2111
-     },
+    },
     entry: './src/client/index.js',
     mode: 'production',
     devtool: 'source-map',
@@ -16,7 +16,7 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
-    module: { 
+    module: {
         rules: [
             {
                 test: '/\.js$/',
@@ -25,10 +25,10 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
-        }
-        
-        
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            }
+
+
         ]
     },
     plugins: [
@@ -48,8 +48,8 @@ module.exports = {
         new WorkboxPlugin.GenerateSW({
             clientsClaim: true,
             skipWaiting: true
-        }), 
-    
+        }),
+
     ]
 
 

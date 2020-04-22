@@ -16,7 +16,7 @@ module.exports = {
     optimization: {
         minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
-    
+
     module: {
         rules: [
             {
@@ -24,12 +24,12 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
-        
+
             {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-              },
-        
+            },
+
         ]
     },
     plugins: [
@@ -38,5 +38,9 @@ module.exports = {
             filename: "./index.html",
         }),
         new MiniCssExtractPlugin({ filename: "[name].css" }),
-        ]
+        new WorkboxPlugin.GenerateSW()
+
+    
+    ]
+
 }

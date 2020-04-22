@@ -19,12 +19,13 @@
 
         <section>
             <form>
-                <input id="name" name="input"  type="url" value="" type="url" placeholder="Put in the URL of any article in the Internet :)" >
+                <input id="name" name="input" type="url" value="" type="url"
+                    placeholder="Put in the URL of any article in the Internet :)">
 
                 <button onclick="return Client.whenSubmit(event)">Watch the Magic!</button>
             </form>
             <section id="dataRe">
-              <h1 id="notValid"></h1>
+                <h1 id="notValid"></h1>
                 <strong>The Outcome:</strong>
                 <div>
                     <ul>
@@ -50,8 +51,8 @@
         </section>
     </main>
     <script>
-      //Here is the Service Worker!
-      if ('serviceWorker' in navigator) {
+        //Here is the Service Worker!
+        if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/service-worker.js').then(registration => {
                     console.log('SW registered: ', registration);

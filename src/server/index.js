@@ -49,12 +49,12 @@ app.post('/article', function (req, res) {
     url: APIurl,
     mode: 'document'
   },
-  
-  function (error, response) {
-  
-    res.send(response)
-  
-  })
+
+    function (error, response) {
+
+      res.send(response)
+
+    })
 });
 
 module.exports = app;
