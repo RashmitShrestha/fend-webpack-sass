@@ -1,36 +1,26 @@
-// Personal API Key for OpenWeatherMap API
-//w3Sschool and Stack Overflow helped with the code and underestanding
-const geoApiUn = 'rashmeat';
-// Create a new date instance dynamically with JS
-
-
-//Help From "Updating UI Elements"
-// Event listener to add function to existing HTML DOM element
+const geoApiUn = '&username=rashmeat';
+// ...
 /* Function called by event listener */
 function geoPerformAction(e) {
-
     // Friends helped with getting API data
     getGeoApiData('http://api.geonames.org/postalCodeSearchJSON?postalcode=', document.getElementById('input1').value, geoApiUn)
     .then( (APIarrGeo) => {
-        postGeoData('/geoadd', { Lat:  APIarrGeo[1], Lon: APIarrGeo[0], Pla: APIarrGeo[2] });
+        postGeoData('/geoadd', { Lat:  APIarrGeo[1], Long: APIarrGeo[0], Pla: APIarrGeo[2] });
     })
-  
     .then(function (){
         updateUIGeo();
         })
 }
-
-//Friend helped with me with get API data
+// ...
 /* Function to GET Web API Data*/
 const getGeoApiData = async (apiURL, place, geoApiUn) => {
-    const response = await fetch(apiURL + place + '&maxRows=10&username=' + geoApiUn);
+    const response = await fetch(apiURL + place + '&maxRows=10' + geoApiUn);
     try {
-        const geowebData = await response.json();
-        Long = geowebData.postalCodes[0].lng;
-        Lat = geowebData.postalCodes[0].lat;
-        Pla = geowebData.postalCodes[0].placeName;
-
-        const APIarrGeo = [Long, Lat, Pla];
+      const geowebData = await response.json();
+      const Long = geowebData.postalCodes[0].lng;
+      const Lat = geowebData.postalCodes[0].lat;
+      const Pla = geowebData.postalCodes[0].placeName;
+      const APIarrGeo = [Long, Lat, Pla];
 
         return APIarrGeo;
       } 
@@ -38,8 +28,6 @@ const getGeoApiData = async (apiURL, place, geoApiUn) => {
         console.log("error", error);
     }
 }
-
-
 /* Function to GET Project Data */
 //Help From "Async GET"
 const retrieveGeoData = async (url='') =>{ 
@@ -83,7 +71,7 @@ const updateUIGeo = async () => {
         const georecRec = await georequest.json();
         console.log(georecRec);
         document.getElementById('lat').innerHTML =  georecRec.Lat;
-        document.getElementById('lon').innerHTML =  georecRec.Lon;
+        document.getElementById('lon').innerHTML =  georecRec.Long;
         document.getElementById('place').innerHTML =  georecRec.Pla;
 
       }catch(error){
