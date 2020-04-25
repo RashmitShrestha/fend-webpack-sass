@@ -1,60 +1,78 @@
 const dotenv = require('dotenv');
 dotenv.config();
-//Code Academy in the Back - End section helped tons after looking at other people's code to get an idea
-//Some help gotten from Eyong Kevin
-//place these dependencies from npm
-var path = require('path');
+
 const express = require('express');
 const app = express();
-const cors = require('cors');
-const bodyParser = require('body-parser');
 
-var aylien = require("aylien_textapi");
-// set aylien API credentials
-var textapi = new aylien({
-  application_id: process.env.API_ID,
-  application_key: process.env.API_KEY
-});
+/* Empty JS object to act as endpoint for all routes */
+const geoProjectData = {};
+const weaProjectData = {};
+const pixProjectData = {};
 
-//some middleware
-app.use(cors());
-app.use(bodyParser.json());
+
+
+
+
+
+
+
+/* Initialize the main project folder*/
 app.use(express.static('dist'));
-//URL needs to be encoded
-app.use(bodyParser.urlencoded({ extended: true }));
-//Partly utilized from my Weather Journal
-//Help from the Node.js website
+//Decided to use an uncommon port for expiremental purposes
+const port = 7110;
+/* Spin up the server*/
+app.listen(port, listening);
+ function listening(){
+    // console.log(server);
+    console.log(`running on localhost: ${port}`);
+  };
 
-//To display the webpage, use the index file in the dist folder, instead of the one in the view folder
-app.get('/', function (req, res) {
-  res.sendFile('dist/index.html');
-})
-//Help from the Node.js website
+  /* Geonames API*/
+// GET route
+app.get('/geoall', sendData);
 
-//From Weather Journal App
-// Listen for port 2111
-const port = 2111;
+function sendData (request, response) {
+  response.send(geoProjectData);
+};
 
-app.listen(port, function () {
-  console.log(`Listen for port number: ${port}!`)
-})
+// POST route
+//Combine the two POSTS Functions into one
+app.post('/geoadd', geoCallBack);
+function geoCallBack (req,res){
+  Object.assign(geoProjectData,req.body);
+  res.send(true);
+};
 
+  /* Weatherbit API*/
+// GET route
+app.get('/weaall', weaSendData);
 
+function weaSendData (request, response) {
+  response.send(weaProjectData);
+};
 
-//Help from the Node.js website
-app.post('/article', function (req, res) {
-  const APIurl = req.body.text;
-  //help from Aylien Documentation https://docs.aylien.com/textapi/sdks/#node-js-sdk
-  textapi.sentiment({
-    url: APIurl,
-    mode: 'document'
-  },
+// POST route
+//Combine the two POSTS Functions into one
+app.post('/weaadd', weaCallBack);
+function weaCallBack (req,res){
+  Object.assign(weaProjectData,req.body);
+  res.send(true);
+};
+  /* Pixaby API*/
+// GET route
 
-    function (error, response) {
+app.get('/pixall', pixSendData);
 
-      res.send(response)
+function pixSendData (request, response) {
+  response.send(pixProjectData);
+};
 
-    })
-});
+// POST route
+//Combine the two POSTS Functions into one
+app.post('/pixadd', pixCallBack);
+function pixCallBack (req,res){
+  Object.assign(pixProjectData,req.body);
+  res.send(true);
+};
 
 module.exports = app;

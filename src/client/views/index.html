@@ -1,71 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Udacity Projects</title>
-    <link href="main.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Weather Journal</title>
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+  <link href="main.css" rel="stylesheet">
 </head>
-
 <body>
-    <header>
-        <div>
-            <b>Udacity Projects: Analyze Article with Aylien API</b>
-        </div>
-    </header>
-    <main>
 
-        <section>
-            <form>
-                <input id="name" name="input" type="url" value="" type="url"
-                    placeholder="Put in the URL of any article in the Internet :)">
+  <div id="app">
+    <div class="holder headline">
+      Weather Journal App
+    </div>
+    <div class="holder zip">
+      <label for="zip">Enter Zipcode here</label>
+      <input type="text" id="input1" placeholder="enter zip code here">
+    </div>
+    <div class="holder feel">
+     
+    <button onclick="Client.geoClick()" id="generate1" type="submit"> Generate 1</button>
+    <button onclick="Client.weaClick()" id="generate2" type="submit"> Generate 2</button>
+    <button onclick="Client.pixClick()" id="generate3" type="submit"> Generate 3</button>
 
-                <button onclick="return Client.whenSubmit(event)">Watch the Magic!</button>
-            </form>
-            <section id="dataRe">
-                <h1 id="notValid"></h1>
-                <strong>The Outcome:</strong>
-                <div>
-                    <ul>
-                        <li>
-                            <h1>Text Polarity:</h1>
-                            <p id="pol"></p>
-                            <h1>Confidence:</h1>
-                            <p id="polcon"></p>
-                        </li>
-                        <li>
-                            <h1>Subjectivity:</h1>
-                            <p id="sub"></p>
-                            <h1>Subjectivity Confidence:</h1>
-                            <p id="subcon"></p>
-                        </li>
-                        <li>
-                            <h1>The Article Extracted:</h1>
-                            <p id="orURL"></p>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </section>
-    </main>
-    <script>
-        //Here is the Service Worker!
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js').then(registration => {
-                    console.log('SW registered: ', registration);
-                });
-            });
-        } else {
-            console.log("Service Working not working");
-        }
-    </script>
-    <footer>
-        <p>Project Created for the Udacity FEND &copy; 2019</p>
-    </footer>
-    <script type="text/javascript" src="main.js"></script>
-</body>
+   
+      <input id="input2"
+             placeholder="dd/mm/yyyy"
+             type="date">
+
+      <input id="input3"
+             placeholder="dd/mm/yyyy"
+             type="date">
+   
+  
+    </div>
+    <div class="holder entry">
+      <div class="title">Most Recent Entry</div>
+      <div id="entryHolder">
+        <p style="display: none;" id="lat"></p>
+        <p style="display: none;" id="lon"></p>
+        <p style="display: none;" id="place"></p>
+<p id="countdown"></p>
+<p id="LoT"></p>
+
+<div id="maxtemp"></div>
+        <div id="mintemp"></div>
+        <div id="precip"></div>
+
+    <img id="imagep" style="border: 3px solid olivedrab;">
+    
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="main.js"></script></body>
 
 </html>

@@ -6,7 +6,7 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     devServer: {
-        port: 2111
+        port: 7110
     },
     entry: './src/client/index.js',
     mode: 'production',
