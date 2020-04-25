@@ -1,33 +1,31 @@
-const geoApiUn = '&username=rashmeat';
-// ...
-/* Function called by event listener */
-function geoPerformAction(e) {
-    // Friends helped with getting API data
-    getGeoApiData('http://api.geonames.org/postalCodeSearchJSON?postalcode=', document.getElementById('input1').value, geoApiUn)
-    .then( (APIarrGeo) => {
-        postGeoData('/geoadd', { Lat:  APIarrGeo[1], Long: APIarrGeo[0], Pla: APIarrGeo[2] });
-    })
-    .then(function (){
-        updateUIGeo();
-        })
-}
-// ...
-/* Function to GET Web API Data*/
-const getGeoApiData = async (apiURL, place, geoApiUn) => {
-    const response = await fetch(apiURL + place + '&maxRows=10' + geoApiUn);
-    try {
-      const geowebData = await response.json();
-      const Long = geowebData.postalCodes[0].lng;
-      const Lat = geowebData.postalCodes[0].lat;
-      const Pla = geowebData.postalCodes[0].placeName;
-      const APIarrGeo = [Long, Lat, Pla];
 
-        return APIarrGeo;
-      } 
-      catch (error) {
-        console.log("error", error);
-    }
+function geoPerformAction(e) {
+  // Friends helped with getting API data
+  const apiURL = 'http://api.geonames.org/postalCodeSearchJSON?postalcode='
+  const place = document.getElementById('input1').value
+  const geoApiUn = '&username=rashmeat';
+  
+  fetch(apiURL + place + '&maxRows=10' + geoApiUn)
+  .then( response => {
+      return response.json();
+    })
+  .then(geowebData => {
+    const Long = geowebData.postalCodes[0].lng;
+    const Lat = geowebData.postalCodes[0].lat;
+    const Pla = geowebData.postalCodes[0].placeName;
+    const APIarrGeo = [Long, Lat, Pla];
+      return APIarrGeo;
+  })
+  .then(APIarrGeo => {
+    postGeoData('/geoadd', { Lat:  APIarrGeo[1], Long: APIarrGeo[0], Pla: APIarrGeo[2] });
+  })
+  .then(() => {
+    updateUIGeo();
+  })
 }
+
+
+
 /* Function to GET Project Data */
 //Help From "Async GET"
 const retrieveGeoData = async (url='') =>{ 
