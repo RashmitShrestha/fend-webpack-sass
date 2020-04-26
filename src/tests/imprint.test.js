@@ -1,19 +1,25 @@
 
 //Lots of help from the Jest documentation
-import { whenSubmit } from '/rashmit_git_Repos/fend-webpack-sass/src/client/js/imprint';
-import { getApiData } from '/rashmit_git_Repos/fend-webpack-sass/src/client/js/imprint';
+import { geoClick } from '/rashmit_git_Repos/fend-webpack-sass/src/client/js/imprint';
+import { weaClick } from '/rashmit_git_Repos/fend-webpack-sass/src/client/js/imprint';
+import { pixClick } from '/rashmit_git_Repos/fend-webpack-sass/src/client/js/imprint';
+//Tests don't logically make sense
 
+test('expects to be a function', () => {
 
-test('expects to be a object', () => {
+    expect(typeof geoClick()).toBe('function');
 
-    expect(typeof whenSubmit()).toBe('function');
+});
+
+test('expects to be a function', () => {
+
+    expect(typeof weaClick()).toBe('object');
 
 });
 
 
+test('expects to be a function', () => {
 
-test('expects to be a object', () => {
-
-    expect(typeof getApiData()).toBe('object');
+    expect(typeof pixClick()).toBe('object');
 
 });

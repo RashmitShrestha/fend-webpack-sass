@@ -1,28 +1,12 @@
-# Webpack Express With Sass Example App
+# FINAL FEND CAPSTONE TRAVEL APP
+Hey there, you've managed to find my repo housing Udacity's final Travel App Project,
+congratulations. Basically, this project concatenates three different API to obtain data
+and display it on the webpage. 
 
-The goal of this repo is be an example of a basic but functional app built on Express and Webpack.
+# REMINDERS
+This project runs on port: 7100 and the code in imprint.js mainly came from my Weather 
+Journal Project. 
 
-If you want to follow along, start from branch 0-initial-setup. Each branch in this project is a step along the path to creating a fully functional webpack setup. In each branch, there will be a documentation file that lists out the steps taken in that branch (each step is also roughly a git commit if you look at the history) which you can use as a checklist when setting up your own projects. 
-
-## What we will cover
-
-We will cover:
-
-- Transpiling Sass to CSS using Webpack
-- Fixing Javascript event errors
-- Building a better production config for Webpack
-- Adding Service Workers to our app using Webpack
-
-## Get Up and Running
-
-Fork this repo, then clone the branch of your choice from your forked repo down to your computer:
-
-```
-git clone -- git@github.com:[your-user-name]/webpack-express.git --
-```
-
-`cd` into your new folder and run:
-- ```npm install```
-- ```npm run build-dev``` to start the webpack dev server
-- ```npm run build-prod``` to generate a dist folder for prod
-- ```npm start``` to run the Express server on port 8081
+# ABOVE AND BEYOND
+I decided to append an end date and display the length of the trip (which doesn't always 
+work due to Weatherbit)

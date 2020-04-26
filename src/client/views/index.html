@@ -6,53 +6,91 @@
   <title>Weather Journal</title>
   <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
   <link href="main.css" rel="stylesheet">
-</head>
-<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+</head>
+
+<body>
+<center>
   <div id="app">
     <div class="holder headline">
-      Weather Journal App
+      <h1>Travel Hornet</h1>
+      <p>This is a webapp I've made for the Udacity Front - End Nanodegree Course.
+        To use it, add all the specified information in and then press the 3 buttons
+        in order for it to work. (Btw not all combinations of results will work
+        due to the API being used)</p>
+
     </div>
-    <div class="holder zip">
-      <label for="zip">Enter Zipcode here</label>
-      <input type="text" id="input1" placeholder="enter zip code here">
-    </div>
-    <div class="holder feel">
-     
-    <button onclick="Client.geoClick()" id="generate1" type="submit"> Generate 1</button>
-    <button onclick="Client.weaClick()" id="generate2" type="submit"> Generate 2</button>
-    <button onclick="Client.pixClick()" id="generate3" type="submit"> Generate 3</button>
 
-   
-      <input id="input2"
-             placeholder="dd/mm/yyyy"
-             type="date">
 
-      <input id="input3"
-             placeholder="dd/mm/yyyy"
-             type="date">
-   
-  
-    </div>
-    <div class="holder entry">
-      <div class="title">Most Recent Entry</div>
-      <div id="entryHolder">
-        <p style="display: none;" id="lat"></p>
-        <p style="display: none;" id="lon"></p>
-        <p style="display: none;" id="place"></p>
-<p id="countdown"></p>
-<p id="LoT"></p>
+    <div class="int">
 
-<div id="maxtemp"></div>
-        <div id="mintemp"></div>
-        <div id="precip"></div>
+      <div class="intc">
+        <center>
+          <div class="holder zip">
+            <label for="zip">Enter Zip/Postal Code here</label>
+            <input type="text" id="zipPostCode" placeholder="enter zip code here">
+          </div>
+          <div class="holder feel">
 
-    <img id="imagep" style="border: 3px solid olivedrab;">
-    
+            <button onclick="Client.geoClick()" class="generate1" type="submit"> Press First </button>
+            <button onclick="Client.weaClick()" class="generate1" type="submit"> Press Second </button>
+            <button onclick="Client.pixClick()" class="generate1" type="submit"> Press Third </button>
+
+
+            <input id="startingDateForm" placeholder="dd/mm/yyyy" type="date">
+
+            <input id="endingDateForm" placeholder="dd/mm/yyyy" type="date">
+
+          </div>
+        </center>
       </div>
-    </div>
-  </div>
 
-  <script type="text/javascript" src="main.js"></script></body>
+      <div class="intc">
+        <center>
+          <div class="holder entry">
+            <div class="title">Behold, Your Results!</div>
+            <div id="entryHolder">
+              <p style="display: none;" id="lat"></p>
+              <p style="display: none;" id="lon"></p>
+              <p style="display: none;" id="place"></p>
+              <p id="countdown"></p>
+              <p id="totDuration"></p>
+
+              <div id="maxtemp"></div>
+              <div id="mintemp"></div>
+              <div id="precip"></div>
+              </br> </br>
+
+              <h2>Image of Your Location:</h2>
+              </br>
+
+              <img id="imagep" style="border: 3px solid olivedrab; height:400px; width:700px;">
+
+            </div>
+          </div>
+
+      </div>
+      </center>
+    </div>
+
+
+
+  </div>
+</center>
+
+
+  <script type="text/javascript" src="main.js"></script>
+  <script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+  </script>
+</body>
 
 </html>

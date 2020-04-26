@@ -1,14 +1,19 @@
+
+$teal: #028482;
+$purp: #B76EB8;
+$green: #7ABA7A;
+
 body{
-    background: #B6C0D2;
+    background: rgb(75, 75, 75);
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
+    grid-auto-rows: minmax(40px, auto);
     /* grid-template-columns:  */
     height:100vh;
-    color: #1C263C;
+    color: rgb(255, 255, 255);
     justify-content: center;
     grid-gap: 1em;
     font-size: 30px;
@@ -16,14 +21,14 @@ body{
 }
 
 .holder{
-    display: grid;
-    grid-auto-rows: minmax(20px, auto);
+width:auto;
     justify-content: center;
-    margin:10px;
+    margin:30px;
+
 }
 
 .entry{
-    background: #9CFF00;
+    background: $teal;
 height: auto;
 font-size: 20px;
 }
@@ -45,8 +50,8 @@ input{
     display:block;
     height: 60px;
     width: 320px;
-    background:#9CFF00;
-    color: #1C263C;
+    background:$teal;
+    color: #fff;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     border: none;
@@ -55,12 +60,12 @@ input{
 button{
     width: auto;
     height: 50px;
-    background: #313C53;
+    background: #7ABA7A;
     color: #FFFFFF;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
     border: none;
-    box-shadow: 2px 4px #455268;
+    box-shadow: 2px 4px $purp;
 }
 
 h1{
@@ -68,7 +73,7 @@ h1{
 }
 
 textarea{
-    background:#9CFF00;
+    background:$purp;
     color: #1C263C;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
@@ -98,3 +103,93 @@ button:focus {
     font-family: 'Oswald', sans-serif;
 
 } 
+
+
+
+.int {
+    margin:0px 0px 20px 0px;
+    display: flex;
+    background-color: #CCCC66;
+    height: 700px;
+    padding: 20px;
+    }
+    
+    
+    
+    .intimg {
+    box-shadow: 15px 15px #990000;
+    height:500px;
+    width:500px;
+    
+    }
+    
+
+    #introd {
+        color: #990000;
+        margin:18px;
+        font-size: 20px;
+          text-decoration: underline;
+        }
+          
+
+.generate1 {
+
+
+&:hover {
+background-color:#48ad48 ;
+
+}
+    
+}
+
+    .intp {
+  
+        font-family: 'Comfortaa', cursive;
+        
+        }
+        
+        
+        .blogt {
+            font-family: 'Teko', sans-serif;
+            font-size: 35px;
+            text-decoration: underline;
+            }
+        
+        
+        .intc {
+        width: auto;
+        }
+
+
+ 
+        @media (max-width: 600px) {
+        
+        .holder {
+
+
+            
+        }
+            .intimg {
+                height:200px;
+                width:200px;
+                }
+                .int {
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                padding: auto;
+                width:100%;
+                
+                }
+
+                .blogt {
+  
+                    font-size: 27px;
+                    
+                    }
+                  
+                  #imagep {
+height: 200px;
+width: auto;;
+                  }  
+
+        }

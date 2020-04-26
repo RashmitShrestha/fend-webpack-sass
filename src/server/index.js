@@ -1,21 +1,29 @@
-  
-const dotenv = require('dotenv');
-dotenv.config();
-
-const express = require('express');
-const app = express();
-
 /* Empty JS object to act as endpoint for all routes */
 const geoProjectData = {};
 const weaProjectData = {};
-const pixProjectData = {};
+//From Weather Journal App
 
 
 
 
+const dotenv = require('dotenv');
+dotenv.config();
+/* Express to run server and routes */
+const express = require('express');
 
+/* Start up an instance of app */
+const app = express();
 
+/* Dependencies */
+const bodyParser = require('body-parser')
 
+/* Middleware*/
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+// Cors for cross origin allowance
+const cors = require('cors');
+app.use(cors());
 
 /* Initialize the main project folder*/
 app.use(express.static('dist'));
@@ -23,57 +31,63 @@ app.use(express.static('dist'));
 const port = 7100;
 /* Spin up the server*/
 app.listen(port, listening);
- function listening(){
-    // console.log(server);
-    console.log(`running on localhost: ${port}`);
-  };
+function listening() {
+  // console.log(server);
+  console.log(`running on localhost: ${port}`);
+};
 
-  /* Geonames API*/
+/* Geonames API*/
 // GET route
 app.get('/geoall', sendData);
 
-function sendData (request, response) {
+function sendData(request, response) {
   response.send(geoProjectData);
 };
 
 // POST route
 //Combine the two POSTS Functions into one
 app.post('/geoadd', geoCallBack);
-function geoCallBack (req,res){
-  Object.assign(geoProjectData,req.body);
+function geoCallBack(req, res) {
+  Object.assign(geoProjectData, req.body);
   res.send(true);
 };
 
-  /* Weatherbit API*/
+
+
+
+
+
+/* Weatherbit API*/
 // GET route
 app.get('/weaall', weaSendData);
 
-function weaSendData (request, response) {
+function weaSendData(request, response) {
   response.send(weaProjectData);
 };
 
 // POST route
 //Combine the two POSTS Functions into one
 app.post('/weaadd', weaCallBack);
-function weaCallBack (req,res){
-  Object.assign(weaProjectData,req.body);
+function weaCallBack(req, res) {
+  Object.assign(weaProjectData, req.body);
   res.send(true);
 };
-  /* Pixaby API*/
+
+
+
+
+/* Geonames API*/
 // GET route
+app.get('/weaall', sendData);
 
-app.get('/pixall', pixSendData);
-
-function pixSendData (request, response) {
-  response.send(pixProjectData);
+function sendData(request, response) {
+  response.send(geoProjectData);
 };
 
 // POST route
 //Combine the two POSTS Functions into one
-app.post('/pixadd', pixCallBack);
-function pixCallBack (req,res){
-  Object.assign(pixProjectData,req.body);
+app.post('/weaadd', geoCallBack);
+function geoCallBack(req, res) {
+  Object.assign(geoProjectData, req.body);
   res.send(true);
 };
-
-module.exports = app;
