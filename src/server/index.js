@@ -28,7 +28,7 @@ app.use(cors());
 /* Initialize the main project folder*/
 app.use(express.static('dist'));
 //Decided to use an uncommon port for expiremental purposes
-const port = 7100;
+const port = process.env.PORT || 3000;
 /* Spin up the server*/
 app.listen(port, listening);
 function listening() {
